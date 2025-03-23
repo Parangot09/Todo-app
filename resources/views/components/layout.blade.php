@@ -18,14 +18,34 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Tasks</a>
                     </li>
+                    @auth
                     <li class="nav-item">
                         <a class="nav-link" href="/create">New task</a>
                     </li>
+                    <li>
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <button class="btn btn-primary">Logout</button>
+                        </form>
+                    </li>
+                    @endauth
+                    @guest
+                    <li>
+                        <a href="/login">
+                            <button class="btn btn-primary me-2">Login</button>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/register">
+                            <button class="btn btn-primary">Register</button>
+                        </a>
+                    </li>
+                    @endguest
             </div>
         </div>
     </nav>
 
-        {{$slot}}
+    {{$slot}}
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

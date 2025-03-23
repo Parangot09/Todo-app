@@ -20,9 +20,24 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Tasks</a>
                     </li>
+                    @auth
                     <li class="nav-item">
                         <a class="nav-link" href="/create">New task</a>
                     </li>
+                    <li>
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <button class="btn btn-primary">Logout</button>
+                        </form>
+                    </li>
+                    @endauth
+                    @guest
+                    <li>
+                        <a href="/login">
+                            <button class="btn btn-primary">Login</button>
+                        </a>
+                    </li>
+                    @endguest
             </div>
         </div>
     </nav>
@@ -32,11 +47,11 @@
     </div>
 
 
-  @if(session("success"))
-      <div class="alert alert-success my-3" role="alert">
-       <p style="text-align: center;">{{session("success")}}</p>
+    @if(session("success"))
+    <div class="alert alert-success my-3" role="alert">
+        <p style="text-align: center;">{{session("success")}}</p>
     </div>
-  @endif
+    @endif
 
 
     <div class="container d-flex flex-wrap justify-content-center">

@@ -5,6 +5,7 @@
         </x-card>
     </div>
 
+    <!--Validation erros -->
     @if($errors->any())
     @foreach($errors->all() as $error)
     <div class="container d-flex flex-wrap justify-content-center my-3 text-danger">
